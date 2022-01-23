@@ -32,10 +32,7 @@ class Likes (
     val canPublish: Boolean,
     count: Int = 0
 ) {
-    var count: Int = count
-        get () {
-            return field
-        }
+    var count = count
         set (value) {
             if (value < 0) {
                 return
@@ -64,3 +61,20 @@ class Reposts (
 class Views (
     val count: Int
 )
+class Donut (
+    val isDonut: Boolean,
+    val paidDuration: Int,
+    val placeholder: Placeholder,
+    val canPublishFreeCopy: Boolean,
+    val editMode: String
+)
+
+object WallService {
+    private var posts = emptyArray<Post>()
+
+    fun add(post: Post): Post {
+        posts += post
+        return posts.last()
+    }
+
+}
