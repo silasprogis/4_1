@@ -64,7 +64,7 @@ class Views (
 class Donut (
     val isDonut: Boolean,
     val paidDuration: Int,
-    val placeholder: Placeholder,
+//    val placeholder: Placeholder, TODO
     val canPublishFreeCopy: Boolean,
     val editMode: String
 )
