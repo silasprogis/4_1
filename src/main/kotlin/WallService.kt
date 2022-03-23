@@ -4,7 +4,8 @@ object WallService {
     private var posts = emptyArray<Post>()
 
     fun add(post: Post): Post {
-        posts += post.copy(id = post.id + 1)
+//        posts += post.copy(id = post.id + 1)
+        posts += post
         return posts.last()
     }
 
@@ -12,9 +13,13 @@ object WallService {
         var result = false
         for ((index, storePost: Post) in posts.withIndex())
             if (post.id == storePost.id) {
-                posts[index] = storePost.copy()
+                posts[index] = post.copy(ownerId = storePost.ownerId, date = storePost.date)
+//                posts[index] = storePost.copy(ownerId = post.ownerId, date = post.date)
                 result = true
             }
         return result
+    }
+    fun show() {
+        println(posts.last())
     }
 }

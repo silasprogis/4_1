@@ -26,11 +26,11 @@ fun main () {
         postponedId = 1,
     )
     val secondPost = Post(
-        id = 1,
-        ownerId = 1,
+        id = 0,
+        ownerId = 2,
         fromId = 1,
         createdBy = 1,
-        date = 1,
+        date = 2,
         text = "Post2",
         replyOwnerId = 1,
         replyPostId = 1,
@@ -52,5 +52,6 @@ fun main () {
 
     WallService.add(firstPost)
     WallService.update(secondPost)
+    WallService.show()
 }
 
