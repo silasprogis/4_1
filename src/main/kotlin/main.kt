@@ -26,17 +26,17 @@ fun main () {
         postponedId = 1,
     )
     val secondPost = Post(
-        id = 0,
+        id = 1,
         ownerId = 2,
         fromId = 1,
         createdBy = 1,
         date = 2,
         text = "Post2",
-        replyOwnerId = 1,
-        replyPostId = 1,
+        replyOwnerId = 11,
+        replyPostId = 11,
         friendsOnly = true,
         comments = Comments(1, true, true, true, true),
-        copyright = Copyright(1, "www.ru", "Internet", "impornant"),
+        copyright = Copyright(1, "www.ru1", "Internet1", "impornant1"),
         likes = Likes(true, true, true),
         reposts = Reposts(1, false),
         views = Views(10),
@@ -51,7 +51,7 @@ fun main () {
     )
 
     WallService.add(firstPost)
-    WallService.update(secondPost)
+    WallService.update(1secondPost)
     WallService.show()
 }
 
