@@ -51,7 +51,7 @@ fun main () {
     )
 
     WallService.add(firstPost)
-    WallService.update(1secondPost)
+    WallService.update(secondPost)
     WallService.show()
 }
 
