@@ -1,8 +1,8 @@
 package ru.netology
 
 fun main () {
-  /*  val firstPost = Post(
-        id = 0,
+    val firstPost = Post(
+        id = 1,
         ownerId = 1,
         fromId = 1,
         createdBy = 1,
@@ -25,7 +25,7 @@ fun main () {
         donut = Donut(true, 10, true, "on"),
         postponedId = 1,
     )
-    val secondPost = Post(
+    /*  val secondPost = Post(
         id = 1,
         ownerId = 2,
         fromId = 1,
@@ -53,7 +53,7 @@ fun main () {
     WallService.add(Post(ownerId = 100, date = 19, text = "первый пост"))
     WallService.add(Post(ownerId = 101, date = 15, text = "второй пост"))
     WallService.add(Post(ownerId = 102, date = 14, text = "третий пост"))
-    //WallService.update(secondPost)
-    WallService.show()
+    WallService.update(firstPost)
+//    WallService.show()
 }
 

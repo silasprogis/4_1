@@ -11,7 +11,7 @@ object WallService {
         }
 
         //posts += post
-        println(posts.last())
+//        println(posts.last())
         return posts.last()
 
     }
@@ -26,7 +26,8 @@ object WallService {
             }
         return result
     }
-    fun show() {
-        println(posts.last())
-    }
+/*    fun show() {
+        for ((index, storePost: Post) in posts.withIndex())
+            println("номер в массиве $index равно $storePost")
+    }*/
 }
