@@ -4,9 +4,16 @@ object WallService {
     private var posts = emptyArray<Post>()
 
     fun add(post: Post): Post {
-        posts += post.copy(id = post.id + 1)
+        if (posts.isEmpty() == true) {
+            posts += post.copy(id = 1)
+        } else {
+            posts += post.copy(id = posts.last().id + 1)
+        }
+
         //posts += post
+        println(posts.last())
         return posts.last()
+
     }
 
     fun update(post: Post): Boolean {
