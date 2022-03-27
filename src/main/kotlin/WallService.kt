@@ -4,6 +4,8 @@ object WallService {
     private var posts = emptyArray<Post>()
 
     fun add(post: Post): Post {
+        val nullText = "нет текста"
+        post.text = post.text ?: nullText
         if (posts.isEmpty() == true) {
             posts += post.copy(id = 1)
         } else {
@@ -16,6 +18,7 @@ object WallService {
 
     }
 
+
     fun update(post: Post): Boolean {
         var result = false
         for ((index, storePost: Post) in posts.withIndex())
@@ -26,8 +29,8 @@ object WallService {
             }
         return result
     }
-/*    fun show() {
+   fun show() {
         for ((index, storePost: Post) in posts.withIndex())
             println("номер в массиве $index равно $storePost")
-    }*/
+    }
 }
