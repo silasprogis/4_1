@@ -1,6 +1,6 @@
 package ru.netology
 
-class Audio (
+data class Audio (
     val id: Int,
     val albumId: Int,
     val artist: String,

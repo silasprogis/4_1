@@ -1,5 +1,6 @@
 package ru.netology
 
-class DocAttachment (
-    override val type as Doc,
+data class DocAttachment (
+    val doc: Doc,
+    override val type: String = "Doc"
 ) : Attachment

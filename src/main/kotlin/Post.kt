@@ -23,6 +23,7 @@ data class Post(
     val markedAsAds: Boolean = true,
     val donut: Donut = Donut(true, 10, true, "on"),
     val postponedId: Int? = 12,
+    var attachment: Array<Attachment> = emptyArray()
 )
 
 

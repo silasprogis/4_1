@@ -1,9 +1,6 @@
 package ru.netology
 
-interface PhotoAttachment {
-    val type: Photo
-    val id: Int
-    val albumId: Int
-    val ownerId: Int
-    val userId: Int
-}
+data class PhotoAttachment (
+    val photo: Photo,
+    override val type: String = "Photo"
+): Attachment

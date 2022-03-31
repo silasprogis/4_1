@@ -29,8 +29,17 @@ object WallService {
             }
         return result
     }
-   fun show() {
+    fun show() {
         for ((index, storePost: Post) in posts.withIndex())
             println("номер в массиве $index равно $storePost")
+    }
+    fun attach(postID: Int, attachment: Attachment): Boolean {
+        var result = false
+        for ((index, storePost: Post) in posts.withIndex())
+            if (postID == storePost.id) {
+                posts[index].attachment += attachment
+                result = true
+            }
+        return result
     }
 }
