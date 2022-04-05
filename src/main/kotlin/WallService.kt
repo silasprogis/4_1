@@ -2,6 +2,7 @@ package ru.netology
 
 object WallService {
     private var posts = emptyArray<Post>()
+    private var comments = emptyArray<Comment>()
 
     fun add(post: Post): Post {
         val nullText = "нет текста"
@@ -38,6 +39,15 @@ object WallService {
         for ((index, storePost: Post) in posts.withIndex())
             if (postID == storePost.id) {
                 posts[index].attachment += attachment
+                result = true
+            }
+        return result
+    }
+    fun createComment(comment: Comment) {
+        var result = false
+        for ((index, post: Post) in posts.withIndex())
+            if (post.id == comment.postId) {
+                comments += comment
                 result = true
             }
         return result
