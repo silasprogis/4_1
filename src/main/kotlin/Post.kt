@@ -6,7 +6,7 @@ data class Post(
     val fromId: Int = 2,
     val createdBy: Int = 1,
     val date: Int,
-    val text: String,
+    var text: String?,
     val replyOwnerId: Int = 3,
     val replyPostId: Int = 3,
     val friendsOnly: Boolean = false,
@@ -22,7 +22,7 @@ data class Post(
     val isPinned: Boolean = true,
     val markedAsAds: Boolean = true,
     val donut: Donut = Donut(true, 10, true, "on"),
-    val postponedId: Int = 12,
+    val postponedId: Int? = 12,
 )
 
 
