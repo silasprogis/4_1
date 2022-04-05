@@ -25,12 +25,16 @@ fun main () {
         donut = Donut(true, 10, true, "on"),
         postponedId = 1,
     )
+    val video = VideoAttachment(Video(1,2,"3","4"))
+    val video1 = VideoAttachment(Video(1,2,"3","4"))
 
     WallService.add(Post(ownerId = 100, date = 19, text = "первый пост"))
     WallService.add(Post(ownerId = 101, date = 15, text = "второй пост"))
     WallService.add(Post(ownerId = 102, date = 14, text = "третий пост"))
     WallService.add(Post(ownerId = 102, date = 14, text = null))
     WallService.update(updatePost)
+    WallService.attach(1, video)
+    WallService.attach(1, video1)
     WallService.show()
 }
 
