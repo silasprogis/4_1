@@ -47,14 +47,15 @@ object WallService {
             }
         return result
     }
-    fun createComment(comment: Comment) {
+    fun createComment(comment: Comment): Comment {
         var result = false
         for (post: Post in posts)
                 if (post.id == comment.postId) {
                     comments += comment
                     result = true
                 }
-        if (result == false) throw PostNotFoundException("No Post Found")
+        if (!result) throw PostNotFoundException("No Post Found")
+        return comments.last()
     }
     class PostNotFoundException(message: String): RuntimeException(message)
 }
