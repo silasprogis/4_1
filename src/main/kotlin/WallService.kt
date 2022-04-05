@@ -1,5 +1,7 @@
 package ru.netology
 
+import java.lang.RuntimeException
+
 object WallService {
     private var posts = emptyArray<Post>()
     private var comments = emptyArray<Comment>()
@@ -33,6 +35,8 @@ object WallService {
     fun show() {
         for ((index, storePost: Post) in posts.withIndex())
             println("номер в массиве $index равно $storePost")
+        for ((index, storeComment: Comment) in comments.withIndex())
+            println("номер в массиве $index равно $storeComment")
     }
     fun attach(postID: Int, attachment: Attachment): Boolean {
         var result = false
@@ -45,11 +49,12 @@ object WallService {
     }
     fun createComment(comment: Comment) {
         var result = false
-        for ((index, post: Post) in posts.withIndex())
-            if (post.id == comment.postId) {
-                comments += comment
-                result = true
-            }
-        return result
+        for (post: Post in posts)
+                if (post.id == comment.postId) {
+                    comments += comment
+                    result = true
+                }
+        if (result == false) throw PostNotFoundException("No Post Found")
     }
+    class PostNotFoundException(message: String): RuntimeException(message)
 }

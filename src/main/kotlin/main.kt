@@ -35,6 +35,7 @@ fun main () {
     WallService.update(updatePost)
     WallService.attach(1, video)
     WallService.attach(1, video1)
+    WallService.createComment(Comment(1,5,"Test"))
     WallService.show()
 }
 
