@@ -63,11 +63,11 @@ class WallServiceTest {
         val addComment = Comment(1,1,"Test")
 
         // добавляем пост и коммент
-        val resultPost = service.add(addPost)
+        service.add(addPost)
         val resultComment = service.createComment(addComment)
 
         // проверяем равенство id в посте и в комменте
-        assertEquals(resultPost.id, resultComment.postId)
+        assertEquals(addComment.postId, resultComment.postId)
     }
 
     @org.junit.Test(expected = PostNotFoundException::class)
@@ -75,5 +75,4 @@ class WallServiceTest {
         val service = WallService
         service.createComment(Comment(1,5,"Test"))
     }
-    class PostNotFoundException(message: String): RuntimeException(message)
 }

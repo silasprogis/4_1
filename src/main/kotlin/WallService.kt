@@ -57,5 +57,4 @@ object WallService {
         if (!result) throw PostNotFoundException("No Post Found")
         return comments.last()
     }
-    class PostNotFoundException(message: String): RuntimeException(message)
 }
