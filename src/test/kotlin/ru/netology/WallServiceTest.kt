@@ -1,6 +1,7 @@
 package ru.netology
 
 import org.junit.Assert.*
+import java.lang.RuntimeException
 
 class WallServiceTest {
 
@@ -51,5 +52,27 @@ class WallServiceTest {
 
         // проверяем отличие исходного и нового id
         assertNotEquals(add.id,result.id)
+    }
+
+    @org.junit.Test
+    fun isCommentAdded() {
+        // создаём целевой сервис
+        val service = WallService
+        // создаем пост и коммент
+        val addPost = Post(ownerId = 100, date = 19, text = "первый пост")
+        val addComment = Comment(1,1,"Test")
+
+        // добавляем пост и коммент
+        service.add(addPost)
+        val resultComment = service.createComment(addComment)
+
+        // проверяем равенство id в посте и в комменте
+        assertEquals(addComment.postId, resultComment.postId)
+    }
+
+    @org.junit.Test(expected = PostNotFoundException::class)
+    fun shouldThrow() {
+        val service = WallService
+        service.createComment(Comment(1,5,"Test"))
     }
 }
