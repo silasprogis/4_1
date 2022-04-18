@@ -27,6 +27,9 @@ fun main () {
     )
     val video = VideoAttachment(Video(1,2,"3","4"))
     val video1 = VideoAttachment(Video(1,2,"3","4"))
+    val note1 = Note(1,"note1", "textofnote1")
+    val note2 = Note(2,"note2", "textofnote2")
+
 
     WallService.add(Post(ownerId = 100, date = 19, text = "первый пост"))
     WallService.add(Post(ownerId = 101, date = 15, text = "второй пост"))
@@ -35,7 +38,11 @@ fun main () {
     WallService.update(updatePost)
     WallService.attach(1, video)
     WallService.attach(1, video1)
-    WallService.createComment(Comment(1,5,"Test"))
+    //WallService.createComment(Comment(100,5,"Test"))
     WallService.show()
+
+    NoteService.add(note1)
+    NoteService.add(note2)
+    NoteService.show()
 }
 

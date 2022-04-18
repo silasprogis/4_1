@@ -3,7 +3,14 @@ package ru.netology
 object NoteService {
     private var notes = mutableListOf<Note>()
 
-    override fun add(note: Note): Note {
-        add.copy(noteId=)
+    fun add(note: Note): Boolean {
+        notes += note
+        return true
     }
+
+    fun show() {
+        for ((index, storeNote: Note) in notes.withIndex())
+            println("номер в массиве $index равно $storeNote")
+    }
+
 }
