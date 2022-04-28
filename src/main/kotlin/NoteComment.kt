@@ -1,8 +1,8 @@
 package ru.netology
 
 data class NoteComment (
-    val noteCommentId: Int,
-    var noteCommentTitle: String?,
-    var noteCommentText: String?,
-    var isDeteted: Boolean = false
+    val commentId: Int,
+    val noteId: Int,
+    var message: String?,
+    var isDeleted: Boolean = false
 )
