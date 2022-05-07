@@ -61,5 +61,13 @@ fun main () {
     NoteService.delete(1)
     NoteService.show()
 
+    val lambda = {a: Int , c: Int -> a*c}
+    println (lambda(5,3))
+
+    fun multiply (a: Int): Int {
+    val b = a*5
+    return b
+    }
+    println (multiply(5))
 }
 

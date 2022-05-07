@@ -1,16 +1,31 @@
 package ru.netology
 
-object ChatService: CrudService<Message, Chat> {
+object ChatService {
 
-    private var oneChat = mutableListOf<Message>()
-    private var chats = mutableListOf<Chat>()
+//    private var oneChat = mutableListOf<Message>()
+    private var chats = mutableListOf<Message>()
 
-    override fun add(message: Message): Message {
+/*    override fun add(message: Message): Message {
+        chats.forEach(if)
         oneChat.add(message)
         return oneChat.last()
     }
+}*/
+    fun add(message: Message): Boolean {
+    var result = false
+    for ((index, storeChat: Message) in chats.withIndex())
+        if ((message.userId == storeChat.userId && message.toUserId == storeChat.toUserId) ||
+            (message.userId == storeChat.toUserId && message.toUserId == storeChat.userId)) {
+            chats[index].add(message)
+            result = true
+        }
+    return result
+    chats.add(oneChat)
 
-/*    val notRed: List<Message> = oneChat.filter { !it.isRed }*/
+}
+
+/*    val notRed: List<Message> = oneChat.filter { !it.isRed }*//*
+
 
     fun MutableList<Message>.makeRead(oneChat: MutableList<Message>){
 
@@ -21,6 +36,7 @@ object ChatService: CrudService<Message, Chat> {
         TODO("Not yet implemented")
     }
 }
+*/
 
 /*
 
