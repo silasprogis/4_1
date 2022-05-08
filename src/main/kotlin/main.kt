@@ -34,6 +34,13 @@ fun main () {
     val noteComment3 = NoteComment( 3,  2,"noteCommentText3")
     val noteComment4 = NoteComment( 4,  2,"noteCommentText4")
     val noteComment5 = NoteComment( 2,  1,"noteCommentText2Corrected")
+    val message1 = Message(1, 2, "1 to 2")
+    val message2 = Message(3, 4, "3 to 4")
+    val message3 = Message(5,4, "5 to 6")
+    val message4 = Message(4, 3, "2 to 1")
+    val message5 = Message(5, 1, "4 to 3")
+    val message6 = Message(1,2, "5 to 1")
+
 
 /*    WallService.add(Post(ownerId = 100, date = 19, text = "первый пост"))
     WallService.add(Post(ownerId = 101, date = 15, text = "второй пост"))
@@ -45,7 +52,7 @@ fun main () {
     //WallService.createComment(Comment(100,5,"Test"))
     WallService.show()*/
 
-    NoteService.add(note1)
+/*    NoteService.add(note1)
     NoteService.add(note2)
     NoteService.createComment(noteComment1)
     NoteService.createComment(noteComment2)
@@ -59,15 +66,34 @@ fun main () {
     NoteService.restoreComment(2)
     NoteService.show()
     NoteService.delete(1)
-    NoteService.show()
+    NoteService.show()*/
+    ChatService.add(message1)
+    ChatService.add(message2)
+    ChatService.add(message3)
+    ChatService.add(message4)
+    ChatService.add(message5)
+    ChatService.add(message6)
 
-    val lambda = {a: Int , c: Int -> a*c}
+    ChatService.show()
+    println("--------------------")
+    ChatService.getUnreadChatsCount()
+    println("--------------------")
+    ChatService.getChats()
+    println("--------------------")
+    ChatService.getChatMessages(2)
+    println("--------------------")
+    ChatService.messageDelete(5)
+    println("--------------------")
+    ChatService.getUnreadChatsCount()
+    ChatService.show()
+
+/*    val lambda = {a: Int , c: Int -> a*c}
     println (lambda(5,3))
 
     fun multiply (a: Int): Int {
     val b = a*5
     return b
     }
-    println (multiply(5))
+    println (multiply(5))*/
 }
 
