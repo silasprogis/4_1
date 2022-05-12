@@ -35,7 +35,7 @@ fun main () {
     val noteComment4 = NoteComment( 4,  2,"noteCommentText4")
     val noteComment5 = NoteComment( 2,  1,"noteCommentText2Corrected")
     val message1 = Message(1, 2, "1 to 2")
-    val message2 = Message(3, 4, "3 to 4")
+    val message2 = Message(1, 2, "3 to 4")
     val message3 = Message(5,4, "5 to 6")
     val message4 = Message(4, 3, "2 to 1")
     val message5 = Message(5, 1, "4 to 3")
@@ -69,14 +69,14 @@ fun main () {
     NoteService.show()*/
     ChatService.add(message1)
     ChatService.add(message2)
-    ChatService.add(message3)
+    /*ChatService.add(message3)
     ChatService.add(message4)
     ChatService.add(message5)
-    ChatService.add(message6)
+    ChatService.add(message6)*/
 
     ChatService.show()
     println("--------------------")
-    ChatService.getUnreadChatsCount()
+    /*ChatService.getUnreadChatsCount()
     println("--------------------")
     ChatService.getChats()
     println("--------------------")
@@ -85,7 +85,7 @@ fun main () {
     ChatService.messageDelete(5)
     println("--------------------")
     ChatService.getUnreadChatsCount()
-    ChatService.show()
+    ChatService.show()*/
 
 /*    val lambda = {a: Int , c: Int -> a*c}
     println (lambda(5,3))
