@@ -61,21 +61,67 @@ object ChatService {
     }
 }
 */
-   private var chats: MutableMap<Pair<Int, Int>, Chat> = mutableMapOf()
+    private var chats: MutableMap<Pair<Int, Int>, Chat> = mutableMapOf()
+    private var chatId = 1
+    private var messageIds = 1
 
-/*    data class Chat(
-        var chatId: Int = 0,
-        var chatMessages: MutableList<Message> = mutableListOf(),
-        var messageCount: Int = 0,
-        var unreadMessageCount: Int = 0,
-        var red: Boolean = false
-    )*/
     fun add(message: Message): Boolean {
     val key = Pair(message.userId,message.toUserId)
-    val chat: Chat
+    val keyBackwards = Pair(message.toUserId,message.userId)
+    var chat: Chat
+
     if (chats.isEmpty()) {
-        chats[key] = Chat(0, mutableListOf(message) , 0, 0,false)
-    } else return false
+        chats[key] = Chat(chatId, mutableListOf(message) , 1, 1,false)
+        chatId++
+        return true
+    } else  if (chats[key] == null && chats[keyBackwards] == null ) {
+        chats[key] = Chat(chatId, mutableListOf(message), 1, 1, false)
+        chats[key]!!.chatMessages.last().messageId = messageIds
+        chats[key]!!.unreadMessageCount = chats[key]!!.chatMessages.count { message: Message -> !message.isRed || message.isDeleted }
+        messageIds++
+        chatId++
+
+    } else if (chats[key] == null) {
+
+        chat = chats[keyBackwards]!!
+        chat.chatMessages.add(message)
+        chat.messageCount = chat.chatMessages.count { message: Message -> !message.isDeleted }
+        chat.chatMessages.last().messageId = messageIds
+        chat.unreadMessageCount = chat.chatMessages.count { message: Message -> !message.isRed || message.isDeleted }
+        messageIds++
+
+    } else {
+        chat = chats[key]!!
+        chat.chatMessages.add(message)
+        chat.messageCount = chat.chatMessages.count { message: Message -> !message.isDeleted }
+        chat.chatMessages.last().messageId = messageIds
+        chat.unreadMessageCount = chat.chatMessages.count { message: Message -> !message.isRed || message.isDeleted }
+        messageIds++
+    }
+        //for ((index, storeKey: Pair<Int, Int>) in chats.keys.withIndex())
+            /*when (storeKey) {
+                key -> {
+                    chat = chats[key]!!
+                    chat.chatMessages.add(message)
+                }
+                keyBackwards -> {
+                    chat = chats[keyBackwards]!!
+                    chat.chatMessages.add(message)
+                }*/
+           /* if (storeKey.equals(key)) {
+                chat = chats[key]!!
+                chat.chatMessages.add(message)
+            } else if (storeKey.equals(keyBackwards)) {
+                chat = chats[keyBackwards]!!
+                chat.chatMessages.add(message)
+            }  else {
+                    chats[key] = Chat(0, mutableListOf(message), 0, 0, false)
+                }*/
+        return false
+
+    }
+
+
    /*     if ()
     chats.put(key, )
     chat.chatMessages.add(message)*/
@@ -99,10 +145,10 @@ object ChatService {
             messageIdMax++
         }
         return chats.last()*/
-    return true
-    }
+
     fun show() {
         chats.forEach { println(it)}
+        chats.keys.forEach { println(it) }
     }
 
 }
